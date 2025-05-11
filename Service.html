@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahrain Medical Services Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #005baa;
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #aad4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #aad4ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #005baa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: #005baa;
+        }
+
+        .service-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-users {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #005baa;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        .start-btn:hover {
+            background-color: #004080;
+        }
+
+        /* Form styles */
+        .form-container {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-title {
+            color: #005baa;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #005baa;
+            box-shadow: 0 0 0 2px rgba(0, 91, 170, 0.2);
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: #005baa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #004080;
+        }
+
+        /* Result page styles */
+        .result-container {
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .result-title {
+            color: #005baa;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .result-message {
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .normal-result {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+
+        .abnormal-result {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+
+        .medication-list {
+            margin-top: 2rem;
+        }
+
+        .medication-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: #005baa;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .download-btn:hover {
+            background-color: #004080;
+        }
+
+        .back-btn {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+            color: #005baa;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo"><i class="fas fa-hospital"></i>Medical Services</a>
+            <ul class="nav-links">
+                <li><a href="inedex.html">Home</a></li>
+                <li><a href="#" class="active">Services</a></li>
+                <li><a href="About.html">About</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Available Medical Services</h1>
+        
+        <div class="services-grid">
+            <!-- Blood Test Service -->
+            <div class="service-card" data-service="blood-test">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Blood Test Results">
+                </div>
+                <div class="service-content">
+                    <h3>Blood Test Results</h3>
+                    <p>Check your blood test results from MyGov website and get immediate analysis whether your results are normal or require medical attention.</p>
+                    <p class="service-users">Available to: All Bahraini patients</p>
+                    <button class="start-btn" data-service="blood-test">Start Service</button>
+                </div>
+            </div>
+
+            <!-- Medication Service -->
+            <div class="service-card" data-service="medication">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Prescribed Medicines">
+                </div>
+                <div class="service-content">
+                    <h3>Prescribed Medicines</h3>
+                    <p>View your registered prescription medications, check renewal requirements, and access your complete medication history with side effects.</p>
+                    <p class="service-users">Available to: All Bahraini patients</p>
+                    <button class="start-btn" data-service="medication">Start Service</button>
+                </div>
+            </div>
+
+            <!-- Home Visit Service -->
+            <div class="service-card" data-service="home-visit">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Home Medical Visits">
+                </div>
+                <div class="service-content">
+                    <h3>Home Medical Visits</h3>
+                    <p>Request medical staff to visit your home for treatment and examinations if you have mobility challenges or special care needs.</p>
+                    <p class="service-users">Available to: Disabled, elderly, and patients with special equipment</p>
+                    <button class="start-btn" data-service="home-visit">Start Service</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blood Test Form -->
+        <div id="blood-test-form" class="form-container">
+            <h2 class="form-title">Blood Test Results Check</h2>
+            <form id="bloodTestForm">
+                <div class="form-group">
+                    <label for="bt-cpr">CPR Number</label>
+                    <input type="text" id="bt-cpr" placeholder="Enter your CPR number" required>
+                    <span class="error-message" id="bt-cpr-error">CPR must be 9 digits and contain only numbers</span>
+                </div>
+                <div class="form-group">
+                    <label for="bt-date">Test Date</label>
+                    <input type="date" id="bt-date" required>
+                    <span class="error-message" id="bt-date-error">Please select a valid date</span>
+                </div>
+                <div class="form-group">
+                    <label for="bt-type">Test Type</label>
+                    <select id="bt-type" required>
+                        <option value="">Select test type</option>
+                        <option value="cbc">Complete Blood Count (CBC)</option>
+                        <option value="glucose">Blood Glucose</option>
+                        <option value="lipid">Lipid Profile</option>
+                        <option value="liver">Liver Function Test</option>
+                        <option value="kidney">Kidney Function Test</option>
+                    </select>
+                    <span class="error-message" id="bt-type-error">Please select a test type</span>
+                </div>
+                <button type="submit" class="submit-btn">Check Results</button>
+            </form>
+        </div>
+
+        <!-- Medication Form -->
+        <div id="medication-form" class="form-container">
+            <h2 class="form-title">Prescribed Medicines Information</h2>
+            <form id="medicationForm">
+                <div class="form-group">
+                    <label for="med-cpr">CPR Number</label>
+                    <input type="text" id="med-cpr" placeholder="Enter your CPR number" required>
+                    <span class="error-message" id="med-cpr-error">CPR must be 9 digits and contain only numbers</span>
+                </div>
+                <div class="form-group">
+                    <label for="med-healthcard">Health Card Number</label>
+                    <input type="text" id="med-healthcard" placeholder="Enter health card number" required>
+                    <span class="error-message" id="med-healthcard-error">Please enter a valid health card number</span>
+                </div>
+                <button type="submit" class="submit-btn">View Medications</button>
+            </form>
+        </div>
+
+        <!-- Home Visit Form -->
+        <div id="home-visit-form" class="form-container">
+            <h2 class="form-title">Request Home Medical Visit</h2>
+            <form id="homeVisitForm">
+                <div class="form-group">
+                    <label for="hv-cpr">CPR Number</label>
+                    <input type="text" id="hv-cpr" placeholder="Enter your CPR number" required>
+                    <span class="error-message" id="hv-cpr-error">CPR must be 9 digits and contain only numbers</span>
+                </div>
+                <div class="form-group">
+                    <label for="hv-name">Patient Name</label>
+                    <input type="text" id="hv-name" placeholder="Enter patient name" required>
+                    <span class="error-message" id="hv-name-error">Please enter patient name</span>
+                </div>
+                <div class="form-group">
+                    <label for="hv-address">Full Address</label>
+                    <input type="text" id="hv-address" placeholder="Enter full address" required>
+                    <span class="error-message" id="hv-address-error">Please enter your address</span>
+                </div>
+                <div class="form-group">
+                    <label for="hv-phone">Phone Number</label>
+                    <input type="tel" id="hv-phone" placeholder="Enter phone number" required>
+                    <span class="error-message" id="hv-phone-error">Please enter a valid phone number</span>
+                </div>
+                <div class="form-group">
+                    <label for="hv-condition">Medical Condition</label>
+                    <select id="hv-condition" required>
+                        <option value="">Select condition</option>
+                        <option value="disabled">Physical Disability</option>
+                        <option value="paralyzed">Paralyzed</option>
+                        <option value="elderly">Elderly Care</option>
+                        <option value="respiratory">Respiratory Equipment</option>
+                        <option value="other">Other Special Care</option>
+                    </select>
+                    <span class="error-message" id="hv-condition-error">Please select a medical condition</span>
+                </div>
+                <div class="form-group">
+                    <label for="hv-date">Preferred Visit Date</label>
+                    <input type="date" id="hv-date" required>
+                    <span class="error-message" id="hv-date-error">Please select a valid date</span>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+
+        <!-- Blood Test Result -->
+        <div id="blood-test-result" class="result-container">
+            <h2 class="result-title">Blood Test Results</h2>
+            <div class="result-message normal-result" id="normal-result">
+                <h3><i class="fas fa-check-circle"></i> Normal Results</h3>
+                <p>Your blood test results are within normal ranges. No further action is required at this time.</p>
+            </div>
+            <div class="result-message abnormal-result" id="abnormal-result" style="display: none;">
+                <h3><i class="fas fa-exclamation-triangle"></i> Abnormal Results</h3>
+                <p>Your test results show values outside the normal range. Please visit your nearest health center or hospital for further evaluation.</p>
+                <p>Recommended action: Schedule an appointment with your doctor within the next 3 days.</p>
+            </div>
+            <div class="test-details">
+                <h4>Test Details:</h4>
+                <p><strong>Test Type:</strong> <span id="result-test-type">Complete Blood Count (CBC)</span></p>
+                <p><strong>Test Date:</strong> <span id="result-test-date">15/06/2023</span></p>
+                <p><strong>CPR Number:</strong> <span id="result-cpr">123456789</span></p>
+            </div>
+            <a href="#" class="back-btn" id="back-from-blood-result"><i class="fas fa-arrow-left"></i> Back to Services</a>
+        </div>
+
+        <!-- Medication Result -->
+        <div id="medication-result" class="result-container">
+            <h2 class="result-title">Your Prescribed Medications</h2>
+            <div class="medication-list">
+                <div class="medication-item">
+                    <div>
+                        <h4>Atorvastatin</h4>
+                        <p>20mg tablet, once daily at bedtime</p>
+                        <p><strong>Status:</strong> <span class="status-available">Available for pickup</span></p>
+                    </div>
+                    <div>
+                        <p><strong>Expires:</strong> 15/12/2023</p>
+                    </div>
+                </div>
+                <div class="medication-item">
+                    <div>
+                        <h4>Metformin</h4>
+                        <p>500mg tablet, twice daily with meals</p>
+                        <p><strong>Status:</strong> <span class="status-renewal">Requires renewal (02/09/2023)</span></p>
+                    </div>
+                    <div>
+                        <p><strong>Expires:</strong> 02/09/2023</p>
+                    </div>
+                </div>
+                <div class="medication-item">
+                    <div>
+                        <h4>Losartan</h4>
+                        <p>50mg tablet, once daily</p>
+                        <p><strong>Status:</strong> <span class="status-available">Available for pickup</span></p>
+                    </div>
+                    <div>
+                        <p><strong>Expires:</strong> 30/11/2023</p>
+                    </div>
+                </div>
+            </div>
+            <div class="side-effects">
+                <h4>Recorded Side Effects:</h4>
+                <p>No significant side effects reported for current medications.</p>
+            </div>
+            <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Medication History (PDF)</a>
+            <a href="#" class="back-btn" id="back-from-medication-result"><i class="fas fa-arrow-left"></i> Back to Services</a>
+        </div>
+
+        <!-- Home Visit Result -->
+        <div id="home-visit-result" class="result-container">
+            <h2 class="result-title">Home Visit Request Confirmation</h2>
+            <div class="result-message normal-result">
+                <h3><i class="fas fa-check-circle"></i> Request Submitted Successfully</h3>
+                <p>Your home medical visit request has been received and is being processed.</p>
+            </div>
+            <div class="visit-details">
+                <h4>Request Details:</h4>
+                <p><strong>Patient Name:</strong> <span id="visit-patient-name">Ahmed Ali</span></p>
+                <p><strong>CPR Number:</strong> <span id="visit-cpr">123456789</span></p>
+                <p><strong>Address:</strong> <span id="visit-address">123 Medical Street, Manama, Bahrain</span></p>
+                <p><strong>Medical Condition:</strong> <span id="visit-condition">Physical Disability</span></p>
+                <p><strong>Scheduled Date:</strong> <span id="visit-date">20/06/2023</span></p>
+                <p><strong>Visit Reference #:</strong> HV-2023-05678</p>
+            </div>
+            <p class="confirmation-message">A nurse will contact you within 24 hours to confirm the visit time and details. In case of emergency, please call 999.</p>
+            <a href="#" class="back-btn" id="back-from-visit-result"><i class="fas fa-arrow-left"></i> Back to Services</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Service selection
+            const startBtns = document.querySelectorAll('.start-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const formContainers = document.querySelectorAll('.form-container');
+            const resultContainers = document.querySelectorAll('.result-container');
+            
+            // Show the selected service form
+            startBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const service = this.dataset.service;
+                    
+                    // Hide all forms and results
+                    formContainers.forEach(form => form.style.display = 'none');
+                    resultContainers.forEach(result => result.style.display = 'none');
+                    
+                    // Show the selected form
+                    document.getElementById(`${service}-form`).style.display = 'block';
+                    
+                    // Scroll to the form
+                    document.getElementById(`${service}-form`).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Back buttons from results
+            document.getElementById('back-from-blood-result').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('blood-test-result').style.display = 'none';
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById('back-from-medication-result').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('medication-result').style.display = 'none';
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            document.getElementById('back-from-visit-result').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('home-visit-result').style.display = 'none';
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Form validation and submission
+            // Blood Test Form
+            document.getElementById('bloodTestForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset errors
+                document.getElementById('bt-cpr-error').style.display = 'none';
+                document.getElementById('bt-date-error').style.display = 'none';
+                document.getElementById('bt-type-error').style.display = 'none';
+                
+                let isValid = true;
+                
+                // Validate CPR
+                const cpr = document.getElementById('bt-cpr').value;
+                if (!/^\d{9}$/.test(cpr)) {
+                    document.getElementById('bt-cpr-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate date
+                const date = document.getElementById('bt-date').value;
+                if (!date) {
+                    document.getElementById('bt-date-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate test type
+                const testType = document.getElementById('bt-type').value;
+                if (!testType) {
+                    document.getElementById('bt-type-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Set result values
+                    document.getElementById('result-test-type').textContent = 
+                        document.getElementById('bt-type').options[document.getElementById('bt-type').selectedIndex].text;
+                    document.getElementById('result-test-date').textContent = formatDate(date);
+                    document.getElementById('result-cpr').textContent = cpr;
+                    
+                    // Randomly show normal or abnormal result (for demo)
+                    if (Math.random() > 0.5) {
+                        document.getElementById('normal-result').style.display = 'block';
+                        document.getElementById('abnormal-result').style.display = 'none';
+                    } else {
+                        document.getElementById('normal-result').style.display = 'none';
+                        document.getElementById('abnormal-result').style.display = 'block';
+                    }
+                    
+                    // Show result
+                    document.getElementById('blood-test-form').style.display = 'none';
+                    document.getElementById('blood-test-result').style.display = 'block';
+                    document.getElementById('blood-test-result').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Medication Form
+            document.getElementById('medicationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset errors
+                document.getElementById('med-cpr-error').style.display = 'none';
+                document.getElementById('med-healthcard-error').style.display = 'none';
+                
+                let isValid = true;
+                
+                // Validate CPR
+                const cpr = document.getElementById('med-cpr').value;
+                if (!/^\d{9}$/.test(cpr)) {
+                    document.getElementById('med-cpr-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate health card
+                const healthcard = document.getElementById('med-healthcard').value;
+                if (!healthcard) {
+                    document.getElementById('med-healthcard-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Show result
+                    document.getElementById('medication-form').style.display = 'none';
+                    document.getElementById('medication-result').style.display = 'block';
+                    document.getElementById('medication-result').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Home Visit Form
+            document.getElementById('homeVisitForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset errors
+                document.getElementById('hv-cpr-error').style.display = 'none';
+                document.getElementById('hv-name-error').style.display = 'none';
+                document.getElementById('hv-address-error').style.display = 'none';
+                document.getElementById('hv-phone-error').style.display = 'none';
+                document.getElementById('hv-condition-error').style.display = 'none';
+                document.getElementById('hv-date-error').style.display = 'none';
+                
+                let isValid = true;
+                
+                // Validate CPR
+                const cpr = document.getElementById('hv-cpr').value;
+                if (!/^\d{9}$/.test(cpr)) {
+                    document.getElementById('hv-cpr-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate name
+                const name = document.getElementById('hv-name').value;
+                if (!name) {
+                    document.getElementById('hv-name-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate address
+                const address = document.getElementById('hv-address').value;
+                if (!address) {
+                    document.getElementById('hv-address-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate phone
+                const phone = document.getElementById('hv-phone').value;
+                if (!/^\d{8}$/.test(phone)) {
+                    document.getElementById('hv-phone-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate condition
+                const condition = document.getElementById('hv-condition').value;
+                if (!condition) {
+                    document.getElementById('hv-condition-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate date
+                const date = document.getElementById('hv-date').value;
+                if (!date) {
+                    document.getElementById('hv-date-error').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Set result values
+                    document.getElementById('visit-patient-name').textContent = name;
+                    document.getElementById('visit-cpr').textContent = cpr;
+                    document.getElementById('visit-address').textContent = address;
+                    document.getElementById('visit-condition').textContent = 
+                        document.getElementById('hv-condition').options[document.getElementById('hv-condition').selectedIndex].text;
+                    document.getElementById('visit-date').textContent = formatDate(date);
+                    
+                    // Show result
+                    document.getElementById('home-visit-form').style.display = 'none';
+                    document.getElementById('home-visit-result').style.display = 'block';
+                    document.getElementById('home-visit-result').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Helper function to format date
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-GB'); // DD/MM/YYYY format
+            }
+        });
+    </script>
+</body>
+</html>

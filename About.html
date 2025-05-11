@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Ministry of Health Bahrain</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #005baa;
+            --secondary-blue: #2c3e50;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 91, 170, 0.8), rgba(0, 91, 170, 0.8)), 
+                        url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-blue);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-box {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        footer {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .contact-info li {
+            margin-bottom: 10px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #aad4ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hospital me-2"></i>Ministry of Health
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="inedex.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Service.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="About.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">About Ministry of Health Bahrain</h1>
+            <p class="lead">Committed to excellence in healthcare services for all citizens and residents</p>
+        </div>
+    </section>
+
+    <!-- About Ministry Section -->
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="section-title">About Us</h2>
+                <p>The Ministry of Health in the Kingdom of Bahrain is the government body responsible for overseeing and developing the healthcare system in the country. Established to ensure the health and wellbeing of all citizens and residents, the Ministry provides comprehensive healthcare services through its network of hospitals, health centers, and specialized facilities.</p>
+                <p>Our mission is to deliver high-quality, accessible healthcare services while promoting public health and preventing diseases through innovative programs and policies.</p>
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="feature-box">
+                            <i class="fas fa-bullseye card-icon"></i>
+                            <h4>Our Vision</h4>
+                            <p>A healthy population enjoying the highest standards of healthcare services in a sustainable environment.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="feature-box">
+                            <i class="fas fa-tasks card-icon"></i>
+                            <h4>Our Mission</h4>
+                            <p>To provide comprehensive, high-quality healthcare services through integrated systems and qualified professionals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1585435557343-3b092031a831?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Ministry of Health Bahrain" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </section>
+
+    <!-- MyGov Section -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title text-center">MyGov Bahrain Services</h2>
+            <p class="text-center mb-5">The official government portal for accessing health services and information online</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-laptop-medical card-icon"></i>
+                            <h4 class="card-title">Online Health Services</h4>
+                            <p class="card-text">Access a wide range of healthcare services including test results, prescriptions, and appointments through the MyGov portal.</p>
+                            <a href="#" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-mobile-alt card-icon"></i>
+                            <h4 class="card-title">MyGov App</h4>
+                            <p class="card-text">Download the official MyGov Bahrain app for convenient access to health services on your mobile device.</p>
+                            <div class="mt-3">
+                                <a href="#" class="btn btn-dark me-2"><i class="fab fa-apple"></i> App Store</a>
+                                <a href="#" class="btn btn-dark"><i class="fab fa-google-play"></i> Play Store</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shield-alt card-icon"></i>
+                            <h4 class="card-title">Secure Access</h4>
+                            <p class="card-text">Your health information is protected with advanced security measures and e-Key authentication.</p>
+                            <a href="#" class="btn btn-primary mt-3">About e-Key</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Services Section -->
+    <section class="container my-5">
+        <h2 class="section-title text-center">Key Health Initiatives</h2>
+        
+        <div class="row mt-4">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Primary Healthcare">
+                    <div class="card-body">
+                        <h5 class="card-title">Primary Healthcare</h5>
+                        <p class="card-text">Comprehensive primary care services through our network of health centers across Bahrain.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Specialized Care">
+                    <div class="card-body">
+                        <h5 class="card-title">Specialized Care</h5>
+                        <p class="card-text">Advanced medical specialties and treatment options at our modern hospitals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Public Health">
+                    <div class="card-body">
+                        <h5 class="card-title">Public Health</h5>
+                        <p class="card-text">Disease prevention and health promotion programs for the community.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Digital Health">
+                    <div class="card-body">
+                        <h5 class="card-title">Digital Health</h5>
+                        <p class="card-text">Innovative e-health solutions to enhance healthcare accessibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Ministry of Health</h5>
+                    <p>Providing quality healthcare services to the people of Bahrain since 1971.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Services</a></li>
+                        <li><a href="#" class="text-white">Health Centers</a></li>
+                        <li><a href="#" class="text-white">Hospitals</a></li>
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contact Information</h5>
+                    <ul class="list-unstyled contact-info">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Building 247, Road 1703, Block 317, Diplomatic Area, Manama</li>
+                        <li><i class="fas fa-phone me-2"></i> +973 1724 0000</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@health.gov.bh</li>
+                        <li><i class="fas fa-clock me-2"></i> Sun-Thu: 7:30 AM - 2:15 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center pt-3">
+                <p class="mb-0">© 2023 Ministry of Health, Kingdom of Bahrain. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
